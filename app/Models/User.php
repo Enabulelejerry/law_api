@@ -37,4 +37,21 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function process(){
+        return $this->hasMany(Process::class,'lawyer_id','id');
+    }
+
+    public function regprocess(){
+        return $this->hasManyThrough(Process::class,
+        Headtype::class,
+        'id',
+        'lawyer_id',
+        'id',
+        'assign_to_id',
+        
+    );   
+
+        return $this->hasManyThrough(Item::class, Type::class);
+    }
 }

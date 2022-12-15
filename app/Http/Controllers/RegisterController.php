@@ -68,7 +68,7 @@ class RegisterController extends Controller
                     'first_name' => $request->first_name,
                     'last_name' => $request->last_name,
                     'phone_no' => $request->phone_no,
-                    'non_lawyer_email' => $request->email,
+                    'email' => $request->email,
                     'password'=>Hash::make($request->password)
                 ]);
                 $token = $user->createToken('app')->accessToken;
@@ -100,7 +100,7 @@ class RegisterController extends Controller
                 $token = $user->createToken('app')->accessToken;
               }
 
-              return response([
+              return response()->json([
                 'message' => "Successfully Registered",
                 'token' => $token,
                 'user' => $user

@@ -17,6 +17,7 @@ class CreateFileUploadsTable extends Migration
             $table->id();
             $table->string('title')->nullable();
             $table->string('image_url')->nullable();
+            $table->string('file_type')->nullable();
             $table->timestamps();
         });
     }

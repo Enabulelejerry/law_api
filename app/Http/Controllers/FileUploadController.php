@@ -43,6 +43,7 @@ class FileUploadController extends Controller
             $rules = array(
                'title' => 'required',
                'image_url' => 'required',
+               'file_type' => 'required',
             );
             
             $validator = Validator::make($request->all(),$rules);
@@ -52,11 +53,10 @@ class FileUploadController extends Controller
             }
 
             $filemodel = new FileUpload();
-
             $filemodel->title = $request->title;
             $filemodel->image_url = $request->image_url;
+            $filemodel->file_type = $request->file_type;
             $filemodel->save();
-
             return response()->json([
               'message' => 'Document Uploaded Successfully',
               'status' => 'success'
